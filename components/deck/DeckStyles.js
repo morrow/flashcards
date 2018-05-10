@@ -5,18 +5,19 @@ export const styles = {
   },
   decks: {
     button: {
-      padding:5,
-      paddingLeft: 15,
-      paddingRight: 15,
-      margin: 5,
+      flex: 1,
+      padding:15,
+      margin: 10,
       borderRadius:5,
       backgroundColor: '#ffffff',
+      alignItems: 'center',
       text: {
         name: {
-          fontSize:30,
-        },
-        questions: {
           fontSize:25,
+        },
+        cards: {
+          marginTop: 5,
+          fontSize:15,
         },
       }
     }
@@ -27,7 +28,7 @@ export const styles = {
       fontSize: 40,
       fontWeight: 'bold',
     },
-    questions: {
+    cards: {
       fontSize:20,
       marginTop: 15,
     },
@@ -38,17 +39,47 @@ export const styles = {
     buttons: {
       marginTop: 10,
       button: {
-        padding: 10,
-        backgroundColor: '#FF0000',
-        margin:10,
+        padding: 15,
+        backgroundColor: '#fff',
+        margin:5,
         borderRadius:5,
         alignItems: 'center',
+        borderColor: '#ccc',
+        borderWidth: 1,
       }
     },
     deckButtonText: {
-      fontSize: 25,
-      fontWeight: 'bold',
-      color: 'white',
+      fontSize: 20,
+      color: 'black',
     },
+  },
+  manageCards: {
+    header: {
+      fontSize:25,
+      marginBottom: 25,
+    },
+    cardButton: {
+      padding: 10,
+      backgroundColor: 'white',
+      margin: 5,
+      borderRadius: 5,
+    },
+    card: {
+      q: {
+        fontSize:18,
+      },
+      a: {
+        fontSize:18,
+        textAlign: 'center'
+      }
+    },
+    textInput: {
+      borderWidth: 1,
+      borderColor: '#ccc',
+      textAlign: 'left',
+      backgroundColor: 'white',
+      padding: 5,
+      width: 300,
+    }
   }
 }

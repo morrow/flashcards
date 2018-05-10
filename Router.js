@@ -3,6 +3,8 @@ import Decks from './components/deck/Decks'
 import Deck from './components/deck/Deck'
 import Quiz from './components/quiz/Quiz'
 import Review from './components/quiz/Review'
+import ManageCards from './components/deck/ManageCards'
+import ManageCard from './components/deck/ManageCard'
 
 const Router = StackNavigator({
   Decks: {
@@ -15,6 +17,18 @@ const Router = StackNavigator({
     screen: Deck,
     navigationOptions: ({ navigation }) => ({
       title: navigation.state.params.item.name,
+    }),
+  },
+  ManageCards: {
+    screen: ManageCards,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name} - Manage Cards`,
+    }),
+  },
+  ManageCard: {
+    screen: ManageCard,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Manage Card',
     }),
   },
   Quiz: {
