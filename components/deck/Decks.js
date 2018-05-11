@@ -21,7 +21,7 @@ const Decks =({navigation, decks})=> {
 }
 
 const mapStateToProps = (state)=> ({
-  decks: state.deck
+  decks: Object.values(state.deck.byId)
 })
 
 

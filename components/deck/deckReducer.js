@@ -1,30 +1,18 @@
-
-const initial_state = [
-  {
-    name: 'Deck 1',
-    key: 1,
-    cards: [
-      {
-        q: 'Name of this deck is?',
-        a: 'Deck 1'
-      },
-      {
-        q: 'How many cards?',
-        a: 2
-      }
-    ]
+const initial_state = {
+  byId: {
+    0: {
+      name: 'Deck 1',
+      id: 0,
+      cards: [0, 1],
+    },
+    1: {
+      name: 'Deck 2',
+      id: 1,
+      cards: [2],
+    },
   },
-  {
-    name: 'Deck 2',
-    key: 2,
-    cards: [
-      {
-        q: 'Name of this deck is?',
-        a: 'Deck 2',
-      },
-    ],
-  },
-]
+  allIds: [0,1],
+}
 
 export const deckReducer = (state=initial_state, action)=> {
   switch(action.type){

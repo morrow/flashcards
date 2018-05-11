@@ -50,36 +50,7 @@ export const styles = {
     },
     deckButtonText: {
       fontSize: 20,
-      color: 'black',
+      // color: 'black',
     },
   },
-  manageCards: {
-    header: {
-      fontSize:25,
-      marginBottom: 25,
-    },
-    cardButton: {
-      padding: 10,
-      backgroundColor: 'white',
-      margin: 5,
-      borderRadius: 5,
-    },
-    card: {
-      q: {
-        fontSize:18,
-      },
-      a: {
-        fontSize:18,
-        textAlign: 'center'
-      }
-    },
-    textInput: {
-      borderWidth: 1,
-      borderColor: '#ccc',
-      textAlign: 'left',
-      backgroundColor: 'white',
-      padding: 5,
-      width: 300,
-    }
-  }
 }
