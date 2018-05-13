@@ -11,7 +11,7 @@ const ManageCards = ({ navigation, decks, cards })=> {
     <TouchableOpacity
       onPress={()=>{ navigation.navigate('ManageCard', { ...item }) }}
       style={styles.manageCards.cardButton}>
-      <Card data={item.item} style={styles.manageCards} />
+      <Card data={item.item} style={styles.manageCards.card} />
     </TouchableOpacity>
   )
   return (

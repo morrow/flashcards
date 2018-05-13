@@ -4,9 +4,10 @@ import { styles } from './cardStyles'
 
 const Card = ({ data, style })=> {
   return (
-    <View style={style.card}>
-      <Text style={style.card.question}>{ data.question }</Text>
-      <Text style={style.card.answer}>{ data.answer }</Text>
+    <View style={style}>
+      <Text style={style.question}>{ data.question }</Text>
+      <View style={style.separator}></View>
+      <Text style={style.answer}>{ data.answer }</Text>
     </View>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { styles } from './QuizStyles'
+import { styles } from './quizStyles'
 
 const Quiz = ({ navigation })=> {
   const item = navigation.state.params

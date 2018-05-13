@@ -1,13 +1,15 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './deckStyles'
+import { getCardCount } from '../card/cardHelpers'
+
 
 const Deck = ({ navigation })=> {
   const item = navigation.state.params.item
   return (
     <View style={styles.container}>
       <Text style={styles.deck.header}>{ item.name }</Text>
-      <Text style={styles.deck.cards}>{ item.cards.length } card{ item.cards.length > 1 ? 's' : '' }</Text>
+      <Text style={styles.deck.cards}>{ getCardCount(item.cards, true) }</Text>
       <Text style={styles.deck.description}>{ item.description }</Text>
       <View style={styles.deck.buttons}>
         <TouchableOpacity
