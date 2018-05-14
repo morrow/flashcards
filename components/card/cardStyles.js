@@ -1,7 +1,15 @@
-export const styles = {
+import { StyleSheet } from 'react-native'
+import { flattenObject } from '../app/appHelpers'
+
+export const _styles = {
   container: {
     alignItems: 'stretch',
     padding: 20,
+  },
+  newCard: {
+    header: {
+      fontSize: 20,
+    }
   },
   manageCards: {
     header: {
@@ -16,6 +24,12 @@ export const styles = {
       marginLeft: 20,
       marginRight: 20,
       borderRadius: 5,
+    },
+    addNewCardButton: {
+      alignItems: 'center',
+      text: {
+        color: 'green',
+      },
     },
     card: {
       separator: {
@@ -79,6 +93,8 @@ export const styles = {
           color:'red',
         }
       }
-      }
+    }
   }
 }
+
+export const styles = StyleSheet.create(flattenObject(_styles))

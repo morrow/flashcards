@@ -1,22 +1,26 @@
 import React from 'react'
 import Card from './Card'
 import { View, Text, TouchableOpacity, FlatList } from 'react-native'
-import { styles } from './cardStyles'
+import { styles, _styles } from './cardStyles'
 import { connect } from 'react-redux'
 
 const ManageCards = ({ navigation, decks, cards })=> {
-  const params = navigation.state.params
-  const deckCards = decks.byId[params.id].cards.map(c=>cards.byId[c])
+  let deckId = navigation.state.params.deckId
+  const deckCards = decks.byId[deckId].cards.map(c=>cards.byId[c])
   const renderItem = (item)=> (
     <TouchableOpacity
       onPress={()=>{ navigation.navigate('ManageCard', { ...item }) }}
-      style={styles.manageCards.cardButton}>
-      <Card data={item.item} style={styles.manageCards.card} />
+      style={styles['manageCards.cardButton']}>
+      <Card data={item.item} style={_styles.manageCards.card} />
     </TouchableOpacity>
   )
   return (
     <View style={styles.container}>
-      <Text style={styles.manageCards.header}>Manage Cards</Text>
+      <TouchableOpacity
+        onPress={()=>{ navigation.navigate('NewCard', {deck: deckId}) }}
+        style={[styles['manageCards.cardButton'], styles['manageCards.addNewCardButton']]}>
+        <Text style={styles['manageCards.addNewCardButton.text']}>Add New Card</Text>
+      </TouchableOpacity>
       <FlatList data={deckCards} renderItem={renderItem} />
     </View>
   )

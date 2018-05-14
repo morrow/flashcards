@@ -1,4 +1,7 @@
-export const styles = {
+import { StyleSheet } from 'react-native'
+import { flattenObject } from '../app/appHelpers'
+
+export const _styles = {
   container: {
     alignItems: 'center',
     paddingTop: 20,
@@ -10,14 +13,13 @@ export const styles = {
     cardButton: {
       position: 'relative',
       padding: 5,
-      background: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },
     card: {
       width: 250,
-      minHeight: 150,
-      justifyItems: 'center',
+      minHeight: 100,
+      justifyContent: 'center',
       alignItems: 'center',
       backfaceVisibility: 'hidden',
       backgroundColor:'white',
@@ -28,25 +30,27 @@ export const styles = {
       text: {
         fontSize: 20,
       },
+      answerHeader: {
+        fontSize: 14,
+        color: '#666',
+        position: 'absolute',
+        top: 10,
+      },
       front: {
 
       },
       back: {
-        backgroundColor:'#ddd',
         position:'absolute',
         top: 5,
       },
-      rotated: (rotation)=>({
-        transform: [
-          { rotateY: rotation }
-        ]
-      }),
       question:{
 
       },
       answer: {
-
+        color: 'blue',
       },
     }
   },
 }
+
+export const styles = StyleSheet.create(flattenObject(_styles))

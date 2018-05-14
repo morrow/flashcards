@@ -1,9 +1,24 @@
-export const styles = {
+import { StyleSheet } from 'react-native'
+import { flattenObject } from '../app/appHelpers'
+
+export const _deckStyles = {
   container: {
     alignItems: 'center',
     paddingTop: 20,
   },
   decks: {
+    newDeck: {
+      newDeckButton: {
+        backgroundColor: 'white',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        text: {
+          fontSize: 18,
+          fontWeight: 'bold',
+        }
+      }
+    },
     button: {
       flex: 1,
       padding:15,
@@ -53,4 +68,21 @@ export const styles = {
       // color: 'black',
     },
   },
+  newDeck: {
+    header: {
+      fontSize: 25,
+    },
+    name: {
+      margin: 10,
+      label: {
+        fontSize: 18,
+      }
+    },
+    textInput: {
+      backgroundColor: 'white',
+      padding: 5,
+    }
+  }
 }
+
+export const deckStyles = StyleSheet.create(flattenObject(_deckStyles))

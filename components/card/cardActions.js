@@ -1,8 +1,15 @@
+export const CREATE_CARD = 'CREATE_CARD'
 export const UPDATE_CARDS = 'UPDATE_CARDS'
 export const UPDATE_CARD = 'UPDATE_CARD'
 export const UPDATE_CARD_QUESTION = 'UPDATE_CARD_QUESTION'
 export const UPDATE_CARD_ANSWER = 'UPDATE_CARD_ANSWER'
 export const DELETE_CARD = 'DELETE_CARD'
+
+export const createCard = (question, answer)=>({
+  type: CREATE_CARD,
+  question,
+  answer,
+})
 
 export const updateCard = (id, question, answer)=>({
   type: UPDATE_CARD,

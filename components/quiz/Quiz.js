@@ -7,7 +7,7 @@ const Quiz = ({ navigation })=> {
   return (
     <View style={styles.container}>
       <Text>Quiz</Text>
-      <Text>{ JSON.stringify(item.questions, null, 2) }</Text>
+      <Text>{ JSON.stringify(item, null, 2) }</Text>
     </View>
   )
 }

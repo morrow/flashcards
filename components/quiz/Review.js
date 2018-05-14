@@ -32,22 +32,28 @@ const Review = ({ navigation, decks, cards, flipCard })=> {
         }
       ).start()
     }
+    const getRotatedStyle = (rotation)=>({
+      transform: [
+        { rotateY: rotation }
+      ]
+    })
     return (
       <TouchableOpacity
         onPress={()=>{flip()}}
-        style={styles.review.cardButton}>
-        <Animated.View style={[styles.review.card, styles.review.card.rotated(item.frontInterpolation)]}>
-          <Text style={styles.review.card.text}>{item.item.question}</Text>
+        style={styles['review.cardButton']}>
+        <Animated.View style={[styles['review.card'], getRotatedStyle(item.frontInterpolation)]}>
+          <Text style={styles['review.card.text']}>{item.item.question}</Text>
         </Animated.View>
-        <Animated.View style={[styles.review.card, styles.review.card.back, styles.review.card.rotated(item.backInterpolation)]}>
-          <Text style={styles.review.card.text}>{item.item.answer}</Text>
+        <Animated.View style={[styles['review.card'], styles['review.card.back'], getRotatedStyle(item.backInterpolation)]}>
+          <Text style={styles['review.card.answerHeader']}>Answer:</Text>
+          <Text style={[styles['review.card.text'], styles['review.card.answer']]}>{item.item.answer}</Text>
         </Animated.View>
       </TouchableOpacity>
     )
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.review.header}>Review</Text>
+      <Text style={styles['header']}>Review</Text>
       <FlatList data={deckCards} renderItem={renderItem} />
     </View>
   )

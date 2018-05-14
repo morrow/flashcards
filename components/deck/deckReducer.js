@@ -1,26 +1,49 @@
-import { UPDATE_DECKS,
+import { CREATE_DECK,
+         UPDATE_DECKS,
+         ADD_CARD_TO_DECK,
          REMOVE_CARD_FROM_DECKS } from './deckActions'
 
 const initial_state = {
-  byId: {
-    0: {
-      name: 'Deck 1',
-      id: 0,
-      cards: [0,1,2,3,4,5,6,7,8],
-    },
-    1: {
-      name: 'Deck 2',
-      id: 1,
-      cards: [2],
-    },
-  },
-  allIds: [0,1],
+  byId: {},
+  allIds: [],
 }
 
 export const deckReducer = (state=initial_state, action)=> {
   switch(action.type){
+    case CREATE_DECK: {
+      let new_deck = {
+        name: action.name,
+        id: state.allIds.length,
+        cards: []
+      }
+      return {
+        ...state.byId,
+        byId: {
+          [new_deck.id]: new_deck
+        },
+        allIds: [
+          ...state.allIds,
+          new_deck.id
+        ]
+      }
+    }
     case UPDATE_DECKS: {
       return action.decks
+    }
+    case ADD_CARD_TO_DECK: {
+      return {
+        ...state.byId,
+        byId: {
+          [action.deckId]: {
+            ...state.byId[action.deckId],
+            cards: [
+              ...state.byId[action.deckId].cards,
+              action.cardId
+            ]
+          }
+        },
+        allIds: state.allIds
+      }
     }
     case REMOVE_CARD_FROM_DECKS: {
       let new_state = JSON.parse(JSON.stringify(state))

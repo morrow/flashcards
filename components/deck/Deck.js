@@ -1,35 +1,42 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { styles } from './deckStyles'
+import { deckStyles } from './deckStyles'
 import { getCardCount } from '../card/cardHelpers'
+import { connect } from 'react-redux'
 
 
-const Deck = ({ navigation })=> {
-  const item = navigation.state.params.item
+const Deck = ({ navigation, deckId, cards, decks })=> {
+  let deck = decks.byId[navigation.state.params.item.id]
   return (
-    <View style={styles.container}>
-      <Text style={styles.deck.header}>{ item.name }</Text>
-      <Text style={styles.deck.cards}>{ getCardCount(item.cards, true) }</Text>
-      <Text style={styles.deck.description}>{ item.description }</Text>
-      <View style={styles.deck.buttons}>
+    <View style={deckStyles.container}>
+      <Text style={deckStyles['deck.header']}>{ deck.name }</Text>
+      <Text style={deckStyles['deck.cards']}>{ getCardCount(deck.cards, true) }</Text>
+      <Text style={deckStyles['deck.description']}>{ deck.description }</Text>
+      <View style={deckStyles['deck.buttons']}>
         <TouchableOpacity
-          onPress={(deck)=>{navigation.navigate('ManageCards', { ...item } ) }}
-          style={styles.deck.buttons.button}>
-          <Text style={styles.deck.deckButtonText}>Manage Cards</Text>
+          onPress={()=>{navigation.navigate('ManageCards', { deckId: deck.id, name: deck.name } ) }}
+          style={deckStyles['deck.buttons.button']}>
+          <Text style={deckStyles['deck.deckButtonText']}>Manage Cards</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={(deck)=>{navigation.navigate('Review', { ...item } ) }}
-          style={styles.deck.buttons.button}>
-          <Text style={styles.deck.deckButtonText}>Review Deck</Text>
+          onPress={()=>{navigation.navigate('Review', { ...deck } ) }}
+          style={deckStyles['deck.buttons.button']}>
+          <Text style={deckStyles['deck.deckButtonText']}>Review Deck</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={(deck)=>{navigation.navigate('Quiz', { ...item } ) }}
-          style={[styles.deck.buttons.button, {color:'green'}]}>
-          <Text style={styles.deck.deckButtonText}>Start Quiz</Text>
+          onPress={()=>{navigation.navigate('Quiz', { ...deck } ) }}
+          style={deckStyles['deck.buttons.button']}>
+          <Text style={deckStyles['deck.deckButtonText']}>Start Quiz</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
 
-export default Deck
+const mapStateToProps = (state)=> ({
+  cards: state.card,
+  decks: state.deck
+})
+
+
+export default connect(mapStateToProps)(Deck)
