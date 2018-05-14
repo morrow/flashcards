@@ -1,6 +1,7 @@
 import { CREATE_DECK,
          UPDATE_DECKS,
          UPDATE_DECK,
+         DELETE_DECK,
          ADD_CARD_TO_DECK,
          REMOVE_CARD_FROM_DECKS } from './deckActions'
 
@@ -44,6 +45,16 @@ export const deckReducer = (state=initial_state, action)=> {
     }
     case UPDATE_DECKS: {
       return action.decks
+    }
+    case DELETE_DECK: {
+      let byId = Object.keys(state.byId)
+        .filter(key=>key != action.id)
+        .reduce( (obj, key) => (obj[key] = state.byId[key], obj), {} )
+      let allIds = state.allIds.filter(c=>c !== action.id)
+      return {
+        byId,
+        allIds
+      }
     }
     case ADD_CARD_TO_DECK: {
       return {

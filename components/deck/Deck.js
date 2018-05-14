@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 
 const Deck = ({ navigation, deckId, cards, decks })=> {
   let deck = decks.byId[navigation.state.params.item.id]
+  if(deck === undefined){
+    return (<Text></Text>)
+  }
   return (
     <View style={deckStyles.container}>
       <Text style={deckStyles['deck.header']}>{ deck.name }</Text>

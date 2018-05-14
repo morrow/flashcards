@@ -3,6 +3,7 @@ export const ADD_CARD_TO_DECK = 'ADD_CARD_TO_DECK'
 export const REMOVE_CARD_FROM_DECKS = 'REMOVE_CARD_FROM_DECKS'
 export const CREATE_DECK = 'CREATE_DECK'
 export const UPDATE_DECK = 'UPDATE_DECK'
+export const DELETE_DECK = 'DELETE_DECK'
 
 export const updateDecks = (decks) =>({
   type: UPDATE_DECKS,
@@ -31,4 +32,9 @@ export const updateDeck = (id, name)=>({
   id,
   name,
   description,
+})
+
+export const deleteDeck = (id)=> ({
+  type: DELETE_DECK,
+  id
 })

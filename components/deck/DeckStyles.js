@@ -9,6 +9,7 @@ export const _deckStyles = {
   decks: {
     newDeck: {
       newDeckButton: {
+        marginTop: 20,
         backgroundColor: 'white',
         padding: 10,
         borderWidth: 1,
@@ -16,6 +17,7 @@ export const _deckStyles = {
         text: {
           fontSize: 18,
           fontWeight: 'bold',
+          color: 'green',
         }
       }
     },

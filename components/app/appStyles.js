@@ -11,8 +11,11 @@ export const _appStyles = {
     borderWidth: 1,
     borderColor: '#ccc',
     text: {
-
+      fontSize: 18,
     }
+  },
+  header: {
+    fontSize: 25,
   },
   form: {
     label: {
@@ -42,6 +45,7 @@ export const _appStyles = {
         backgroundColor: 'white',
         text: {
           color: 'green',
+          fontSize: 16,
         }
       },
       deleteButton: {
@@ -54,6 +58,7 @@ export const _appStyles = {
         borderRadius: 5,
         text: {
           color:'red',
+          fontSize: 16,
         },
       },
       cancelButton: {
@@ -66,6 +71,7 @@ export const _appStyles = {
         borderRadius: 5,
         text: {
           color:'#333',
+          fontSize: 16,
         },
       },
     },

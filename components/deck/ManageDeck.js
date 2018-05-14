@@ -7,10 +7,14 @@ import { connect } from 'react-redux'
 import { updateDeck, deleteDeck } from './deckActions'
 import { NavigationActions } from 'react-navigation'
 
-const ManageDeck = ({ navigation, decks, onChangeName, onChangeDescription, cancel, onUpdate, onDelete })=> {
+const ManageDeck = ({ navigation, decks, onChangeName, onChangeDescription, cancel, onUpdate, confirmDelete })=> {
   let deckId = navigation.state.params.deckId
   let deck = decks.byId[deckId]
+  if(deck === undefined){
+    return (<Text style={appStyles.container}>No Deck Found</Text>)
+  }
   this.name = deck.name
+  this.description = deck.description
   return (
     <View style={appStyles['container']}>
       <Text style={deckStyles['newDeck.header']}> Manage Deck </Text>
@@ -81,7 +85,7 @@ const mapDispatchToProps = (dispatch)=> ({
       'Really delete this deck?',
       [
         {text: 'Delete', onPress: () => {
-          navigation.dispatch(NavigationActions.navigate({routeName: 'Decks'}))
+          navigation.dispatch(NavigationActions.navigate({routeName: 'Decks'}, {}))
           dispatch(deleteDeck(id))
         }, style: 'destructive'},
         {text: 'Cancel', onPress: () => {}, style: 'cancel'},

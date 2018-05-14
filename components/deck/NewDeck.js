@@ -13,7 +13,10 @@ const NewDeck = ({ navigation, deck, decks, onChangeName, onChangeDescription, c
     id: decks.allIds.length,
     key: decks.allIds.length,
     name: '',
+    description: '',
   }
+  this.name = ''
+  this.description = ''
   return (
     <View style={appStyles['container']}>
       <Text style={deckStyles['newDeck.header']}>New Deck </Text>

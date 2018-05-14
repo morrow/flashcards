@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { deckStyles as styles } from './deckStyles'
+import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
 import { getCardCount } from '../card/cardHelpers'
 
@@ -16,11 +17,16 @@ const Decks =({navigation, decks})=> {
   )
   return (
     <View style={styles.container}>
-      <FlatList data={Object.values(decks)} renderItem={renderItem} />
+      {
+        Object.keys(decks).length > 0 ?
+        <FlatList data={Object.values(decks)} renderItem={renderItem} />
+        :
+        <Text style={appStyles.header}>Create a deck to get started:</Text>
+      }
       <TouchableOpacity
         style={styles['decks.newDeck.newDeckButton']}
         onPress={()=>{navigation.navigate('NewDeck')}}>
-        <Text style={styles['decks.newDeck.newDeckButton.text']}>New Deck</Text>
+        <Text style={styles['decks.newDeck.newDeckButton.text']}>+ New Deck</Text>
       </TouchableOpacity>
     </View>
   )
