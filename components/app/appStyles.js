@@ -56,6 +56,18 @@ export const _appStyles = {
           color:'red',
         },
       },
+      cancelButton: {
+        borderColor: '#ccc',
+        borderWidth: 1,
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding: 10,
+        marginLeft: 10,
+        borderRadius: 5,
+        text: {
+          color:'#333',
+        },
+      },
     },
   },
 }

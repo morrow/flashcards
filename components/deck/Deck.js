@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { deckStyles } from './deckStyles'
 import { getCardCount } from '../card/cardHelpers'
 import { connect } from 'react-redux'
@@ -11,8 +11,15 @@ const Deck = ({ navigation, deckId, cards, decks })=> {
     <View style={deckStyles.container}>
       <Text style={deckStyles['deck.header']}>{ deck.name }</Text>
       <Text style={deckStyles['deck.cards']}>{ getCardCount(deck.cards, true) }</Text>
-      <Text style={deckStyles['deck.description']}>{ deck.description }</Text>
+      <ScrollView>
+        <Text style={deckStyles['deck.description']}>{ deck.description }</Text>
+      </ScrollView>
       <View style={deckStyles['deck.buttons']}>
+        <TouchableOpacity
+          onPress={()=>{navigation.navigate('ManageDeck', { deckId: deck.id, name: deck.name } ) }}
+          style={deckStyles['deck.buttons.button']}>
+          <Text style={deckStyles['deck.deckButtonText']}>Manage Deck</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={()=>{navigation.navigate('ManageCards', { deckId: deck.id, name: deck.name } ) }}
           style={deckStyles['deck.buttons.button']}>

@@ -48,8 +48,10 @@ export const _deckStyles = {
       marginTop: 15,
     },
     description: {
-      fontSize:30,
-      height:200,
+      fontSize:20,
+      color: '#555',
+      paddingTop: 20,
+      height:150,
     },
     buttons: {
       marginTop: 10,

@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch)=> ({
     // dispatch(updateCardAnswer(id, text))
   },
   saveChanges: (id, navigation, question, answer)=> {
-    navigation.dispatch(NavigationActions.navigate({routeName: 'NewCard'}))
+    navigation.dispatch(NavigationActions.navigate(routeName: 'Deck', { id }))
     dispatch(updateCard(id, question, answer))
   },
   confirmDelete: (id, navigation)=> {
@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch)=> ({
       'Really delete this card?',
       [
         {text: 'Delete', onPress: () => {
-          navigation.dispatch(NavigationActions.navigate({routeName: 'NewCard'}))
+          navigation.dispatch(NavigationActions.navigate(routeName: 'Deck', { id }))
           dispatch(removeCardFromDecks(id))
           dispatch(deleteCard(id))
         }, style: 'destructive'},

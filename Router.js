@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation'
 import Decks from './components/deck/Decks'
 import Deck from './components/deck/Deck'
 import NewDeck from './components/deck/NewDeck'
+import ManageDeck from './components/deck/ManageDeck'
 import Quiz from './components/quiz/Quiz'
 import Review from './components/quiz/Review'
 import ManageCards from './components/card/ManageCards'
@@ -25,6 +26,12 @@ const Router = createStackNavigator({
     screen: NewDeck,
     navigationOptions: ({ navigation }) => ({
       title: 'New Deck',
+    }),
+  },
+  ManageDeck: {
+    screen: ManageDeck,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name} - Manage Deck`,
     }),
   },
   ManageCards: {

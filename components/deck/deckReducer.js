@@ -1,5 +1,6 @@
 import { CREATE_DECK,
          UPDATE_DECKS,
+         UPDATE_DECK,
          ADD_CARD_TO_DECK,
          REMOVE_CARD_FROM_DECKS } from './deckActions'
 
@@ -13,6 +14,7 @@ export const deckReducer = (state=initial_state, action)=> {
     case CREATE_DECK: {
       let new_deck = {
         name: action.name,
+        description: action.description,
         id: state.allIds.length,
         cards: []
       }
@@ -25,6 +27,19 @@ export const deckReducer = (state=initial_state, action)=> {
           ...state.allIds,
           new_deck.id
         ]
+      }
+    }
+    case UPDATE_DECK: {
+      return {
+        byId: {
+          ...state.byId,
+          [action.id]: {
+            ...state.byId[action.id],
+            name: action.name,
+            description: action.description,
+          }
+        },
+        allIds: state.allIds
       }
     }
     case UPDATE_DECKS: {
