@@ -1,56 +1,34 @@
 import { StyleSheet } from 'react-native'
 import { flattenObject } from '../app/appHelpers'
 
-export const _styles = {
-  container: {
-    alignItems: 'center',
-    paddingTop: 20,
-  },
+export const _quizStyles = {
   header: {
-    fontSize: 20,
+    fontSize: 35,
+    fontWeight:'bold',
   },
-  review: {
-    cardButton: {
-      position: 'relative',
-      padding: 5,
-      alignItems: 'center',
-      justifyContent: 'center',
+  quizItem: {
+    actions: {
+      marginTop: 20,
+      flexDirection: 'row',
+      correctButton: {
+        alignItems: 'center',
+        marginRight: 10,
+        text: {
+          fontSize: 16,
+          color: 'green',
+          fontWeight: 'bold',
+        },
+      },
+      incorrectButton: {
+        alignItems: 'center',
+        text: {
+          fontSize: 16,
+          color: 'red',
+          fontWeight: 'bold',
+        }
+      }
     },
-    card: {
-      width: 250,
-      minHeight: 100,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backfaceVisibility: 'hidden',
-      backgroundColor:'white',
-      borderColor: '#ccc',
-      borderWidth: 1,
-      borderRadius: 5,
-      padding: 10,
-      text: {
-        fontSize: 20,
-      },
-      answerHeader: {
-        fontSize: 14,
-        color: '#666',
-        position: 'absolute',
-        top: 10,
-      },
-      front: {
-
-      },
-      back: {
-        position:'absolute',
-        top: 5,
-      },
-      question:{
-
-      },
-      answer: {
-        color: 'blue',
-      },
-    }
   },
 }
 
-export const styles = StyleSheet.create(flattenObject(_styles))
+export const quizStyles = StyleSheet.create(flattenObject(_quizStyles))

@@ -11,6 +11,48 @@ export const _styles = {
       fontSize: 20,
     }
   },
+  flippable: {
+    cardButton: {
+      position: 'relative',
+      padding: 5,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    card: {
+      width: 250,
+      minHeight: 100,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backfaceVisibility: 'hidden',
+      backgroundColor:'white',
+      borderColor: '#ccc',
+      borderWidth: 1,
+      borderRadius: 5,
+      padding: 10,
+      text: {
+        fontSize: 20,
+      },
+      answerHeader: {
+        fontSize: 14,
+        color: '#666',
+        position: 'absolute',
+        top: 10,
+      },
+      front: {
+
+      },
+      back: {
+        position:'absolute',
+        top: 5,
+      },
+      question:{
+
+      },
+      answer: {
+        color: 'blue',
+      },
+    }
+  },
   manageCards: {
     header: {
       fontSize:25,
@@ -27,8 +69,12 @@ export const _styles = {
     },
     addNewCardButton: {
       alignItems: 'center',
+      borderWidth: 1,
+      borderColor: '#aaa',
       text: {
+        fontSize: 16,
         color: 'green',
+        fontWeight: 'bold',
       },
     },
     card: {

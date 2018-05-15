@@ -4,6 +4,8 @@ import Deck from './components/deck/Deck'
 import NewDeck from './components/deck/NewDeck'
 import ManageDeck from './components/deck/ManageDeck'
 import Quiz from './components/quiz/Quiz'
+import QuizItem from './components/quiz/QuizItem'
+import QuizSummary from './components/quiz/QuizSummary'
 import Review from './components/quiz/Review'
 import ManageCards from './components/card/ManageCards'
 import ManageCard from './components/card/ManageCard'
@@ -13,7 +15,7 @@ const Router = createStackNavigator({
   Decks: {
     screen: Decks,
     navigationOptions: ({ navigation }) => ({
-      title: 'Decks',
+      title: 'Flashcards',
     }),
   },
   Deck: {
@@ -58,6 +60,20 @@ const Router = createStackNavigator({
       title: `${navigation.state.params.name} Quiz`,
       gesturesEnabled: false,
     }),
+  },
+  QuizItem: {
+    screen: QuizItem,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.title,
+      gesturesEnabled: false,
+    })
+  },
+  QuizSummary: {
+    screen: QuizSummary,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.title,
+      gesturesEnabled: false,
+    })
   },
   Review: {
     screen: Review,

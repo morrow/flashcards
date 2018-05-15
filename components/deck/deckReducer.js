@@ -22,6 +22,7 @@ export const deckReducer = (state=initial_state, action)=> {
       return {
         ...state.byId,
         byId: {
+          ...state.byId,
           [new_deck.id]: new_deck
         },
         allIds: [

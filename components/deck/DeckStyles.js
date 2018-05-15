@@ -4,7 +4,7 @@ import { flattenObject } from '../app/appHelpers'
 export const _deckStyles = {
   container: {
     alignItems: 'center',
-    paddingTop: 20,
+    padding: 20,
   },
   decks: {
     newDeck: {
@@ -23,14 +23,16 @@ export const _deckStyles = {
     },
     button: {
       flex: 1,
-      padding:15,
+      padding:10,
       margin: 10,
       borderRadius:5,
       backgroundColor: '#ffffff',
+      borderWidth: 1,
+      borderColor:'#ccc',
       alignItems: 'center',
       text: {
         name: {
-          fontSize:25,
+          fontSize:28,
         },
         cards: {
           marginTop: 5,
@@ -41,8 +43,8 @@ export const _deckStyles = {
   },
   deck: {
     header: {
-      marginTop: 30,
-      fontSize: 40,
+      marginTop: 20,
+      fontSize: 35,
       fontWeight: 'bold',
     },
     cards: {
@@ -53,7 +55,7 @@ export const _deckStyles = {
       fontSize:20,
       color: '#555',
       paddingTop: 20,
-      height:150,
+      height:120,
     },
     buttons: {
       marginTop: 10,
@@ -74,6 +76,7 @@ export const _deckStyles = {
   },
   newDeck: {
     header: {
+      fontWeight: 'bold',
       fontSize: 25,
     },
     name: {

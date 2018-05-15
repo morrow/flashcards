@@ -19,7 +19,7 @@ const NewDeck = ({ navigation, deck, decks, onChangeName, onChangeDescription, c
   this.description = ''
   return (
     <View style={appStyles['container']}>
-      <Text style={deckStyles['newDeck.header']}>New Deck </Text>
+      <Text style={deckStyles['newDeck.header']}>New Deck</Text>
       <View style={[appStyles['form'], deckStyles['newDeck.name']]}>
         <Text style={[appStyles['form.label'], deckStyles['newDeck.name.label']]}>Deck Name:</Text>
         <TextInput

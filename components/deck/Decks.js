@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Text, FlatList, TouchableOpacity } from 'react-native'
 import { deckStyles as styles } from './deckStyles'
 import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
 import { getCardCount } from '../card/cardHelpers'
 
-const Decks =({navigation, decks})=> {
+const Decks =({navigation, decks, ids})=> {
   const renderItem = (item)=> (
     <TouchableOpacity
       key={item.item.name}
@@ -16,7 +16,8 @@ const Decks =({navigation, decks})=> {
     </TouchableOpacity>
   )
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={appStyles.logo}>Flashcards</Text>
       {
         Object.keys(decks).length > 0 ?
         <FlatList data={Object.values(decks)} renderItem={renderItem} />
@@ -28,12 +29,13 @@ const Decks =({navigation, decks})=> {
         onPress={()=>{navigation.navigate('NewDeck')}}>
         <Text style={styles['decks.newDeck.newDeckButton.text']}>+ New Deck</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   )
 }
 
 const mapStateToProps = (state)=> ({
-  decks: state.deck.byId
+  decks: state.deck.byId,
+  ids: state.deck.allIds,
 })
 
 

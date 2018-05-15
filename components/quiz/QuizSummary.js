@@ -4,15 +4,11 @@ import { quizStyles } from './quizStyles'
 import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
 
-const Quiz = ({ navigation })=> {
+const QuizSummary = ({ navigation })=> {
   const deck = navigation.state.params
   return (
     <View style={appStyles.container}>
-      <Text style={quizStyles.header}>{deck.name} Quiz</Text>
-      <TouchableOpacity
-        onPress={()=>{navigation.navigate('QuizItem', {deck, index: 0})}}>
-        <Text style={appStyles.button}>Start Quiz</Text>
-      </TouchableOpacity>
+      <Text style={quizStyles.header}>{deck.name} Quiz Summary </Text>
     </View>
   )
 }
@@ -26,4 +22,4 @@ const mapDispatchToProps = (dispatch)=> ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quiz)
+export default connect(mapStateToProps, mapDispatchToProps)(QuizSummary)

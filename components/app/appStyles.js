@@ -4,18 +4,24 @@ import { flattenObject } from '../app/appHelpers'
 export const _appStyles = {
   container: {
     alignItems: 'center',
-    paddingTop: 20,
+    padding: 20,
   },
   button: {
     padding: 5,
     borderWidth: 1,
     borderColor: '#ccc',
+    backgroundColor: 'white',
     text: {
       fontSize: 18,
     }
   },
   header: {
-    fontSize: 25,
+    marginTop: 10,
+    fontSize: 23,
+  },
+  logo: {
+    fontFamily: 'Avenir-Black',
+    fontSize: 40,
   },
   form: {
     label: {
@@ -54,7 +60,7 @@ export const _appStyles = {
         alignItems: 'center',
         backgroundColor: 'white',
         padding: 10,
-        marginLeft: 10,
+        marginRight: 10,
         borderRadius: 5,
         text: {
           color:'red',
@@ -67,7 +73,7 @@ export const _appStyles = {
         alignItems: 'center',
         backgroundColor: 'white',
         padding: 10,
-        marginLeft: 10,
+        marginRight: 10,
         borderRadius: 5,
         text: {
           color:'#333',

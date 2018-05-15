@@ -16,10 +16,13 @@ const ManageCards = ({ navigation, decks, cards })=> {
   )
   return (
     <View style={styles.container}>
+      { deckCards.length <= 0 &&
+        <Text style={styles['manageCards.header']}>No cards yet.</Text>
+      }
       <TouchableOpacity
         onPress={()=>{ navigation.navigate('NewCard', {deck: deckId}) }}
         style={[styles['manageCards.cardButton'], styles['manageCards.addNewCardButton']]}>
-        <Text style={styles['manageCards.addNewCardButton.text']}>Add New Card</Text>
+        <Text style={styles['manageCards.addNewCardButton.text']}>+ Add New Card</Text>
       </TouchableOpacity>
       <FlatList data={deckCards} renderItem={renderItem} />
     </View>
