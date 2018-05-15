@@ -1,6 +1,20 @@
 export const UPDATE_QUIZZES = 'UPDATE_QUIZZES'
+export const CREATE_QUIZ = 'CREATE_QUIZ'
+export const UPDATE_QUIZ_SCORE = 'UPDATE_QUIZ_SCORE'
 
 export const updateQuizzes = (quizzes)=>({
   type: UPDATE_QUIZZES,
   quizzes
+})
+
+export const createQuiz = (deck)=>({
+  type: CREATE_QUIZ,
+  deck
+})
+
+export const updateQuizScore = (quizId, questionId, score)=> ({
+  type: UPDATE_QUIZ_SCORE,
+  quizId,
+  questionId,
+  score,
 })
