@@ -1,6 +1,6 @@
 import React from 'react'
 import Deck from './Deck'
-import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
+import { KeyboardAvoidingView, View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { deckStyles, _deckStyles } from './deckStyles'
 import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
@@ -18,8 +18,7 @@ const NewDeck = ({ navigation, deck, decks, onChangeName, onChangeDescription, c
   this.name = ''
   this.description = ''
   return (
-    <View style={appStyles['container']}>
-      <Text style={deckStyles['newDeck.header']}>New Deck</Text>
+    <KeyboardAvoidingView behavior="padding" style={appStyles['container']}>
       <View style={[appStyles['form'], deckStyles['newDeck.name']]}>
         <Text style={[appStyles['form.label'], deckStyles['newDeck.name.label']]}>Deck Name:</Text>
         <TextInput
@@ -50,7 +49,7 @@ const NewDeck = ({ navigation, deck, decks, onChangeName, onChangeDescription, c
           <Text style={[appStyles['form.actions.deleteButton.text'], deckStyles['newDeck.actions.deleteButton.text']]}>Cancel</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 

@@ -64,7 +64,7 @@ export const _deckStyles = {
       fontSize:20,
       color: '#555',
       paddingTop: 20,
-      height: 175,
+      // height: 150,
     },
     buttons: {
       marginTop: 10,

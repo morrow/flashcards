@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
+import { KeyboardAvoidingView, View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { styles, _styles } from './cardStyles'
 import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
@@ -19,8 +19,7 @@ const NewCard = ({ navigation, decks, cards, onChangeQuestion, onChangeAnswer, c
   this.question = params.question
   this.answer = params.answer
   return (
-    <View style={styles.container}>
-      <Text style={[appStyles.header, styles['manageCards.header']]}>New Card </Text>
+    <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={-64} style={styles.container}>
       <View style={styles['manageCards.question']}>
         <Text style={styles['manageCards.label']}>Question:</Text>
         <TextInput
@@ -38,7 +37,7 @@ const NewCard = ({ navigation, decks, cards, onChangeQuestion, onChangeAnswer, c
           placeholder='answer'
           onChangeText={text=>onChangeAnswer(text)}
           multiline={true}
-          value={params.answer} />
+          defaultValue={params.answer} />
       </View>
       <View style={styles['manageCards.actions']}>
         <TouchableOpacity
@@ -52,7 +51,7 @@ const NewCard = ({ navigation, decks, cards, onChangeQuestion, onChangeAnswer, c
           <Text style={styles['manageCards.actions.deleteButton.text']}>Cancel</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 

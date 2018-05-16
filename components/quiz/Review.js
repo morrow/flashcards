@@ -41,7 +41,8 @@ const Review = ({ navigation, decks, cards, flipCard })=> {
     return (
       <TouchableOpacity
         onPress={()=>{flip()}}
-        style={quizStyles['review.cardButton']}>
+        style={quizStyles['review.cardButton']}
+        key={item.item.id}>
         <Animated.View style={[quizStyles['review.card'], getRotatedStyle(item.frontInterpolation)]}>
           <Text style={quizStyles['review.card.header']}>Question:</Text>
           <Text style={quizStyles['review.card.text']}>{item.item.question}</Text>

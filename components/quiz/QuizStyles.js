@@ -24,7 +24,6 @@ export const _quizStyles = {
     resetQuizzesButton: {
       width: 150,
       backgroundColor: '#fafafa',
-      textAlign: 'center',
       borderRadius: 5,
       text: {
         textAlign: 'center',
