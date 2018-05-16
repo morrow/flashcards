@@ -148,6 +148,13 @@ export const _quizStyles = {
     }
   },
   summary: {
+    button: {
+      margin: 10,
+      padding: 10,
+      text: {
+        fontSize: 16,
+      }
+    },
     cards: {
       marginTop: 20,
     },

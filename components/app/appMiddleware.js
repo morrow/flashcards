@@ -1,5 +1,8 @@
 import { AsyncStorage } from 'react-native'
-import { getDiff } from './appHelpers'
+import { getDiff, setLocalNotification } from './appHelpers'
+import { FINISH_QUIZ } from '../quiz/quizActions'
+// import PushNotification from 'react-native-push-notification'
+
 
 export const storageMiddleware = (store)=> {
   return next => action => {
@@ -19,5 +22,14 @@ export const loggerMiddleware = (store)=> {
     const after = store.getState()
     console.log(action, before, after)
     console.log(JSON.stringify(getDiff(before, after), null, 2))
+  }
+}
+
+export const notificationMiddleware = (store)=> {
+  return next => action => {
+    next(action)
+    if(action.type === FINISH_QUIZ){
+      setLocalNotification()
+    }
   }
 }

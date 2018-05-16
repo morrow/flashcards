@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { cardReducer } from './components/card/cardReducer'
 import { deckReducer } from './components/deck/deckReducer'
 import { quizReducer } from './components/quiz/quizReducer'
-import { storageMiddleware, loggerMiddleware } from './components/app/appMiddleware'
+import { storageMiddleware, loggerMiddleware, notificationMiddleware } from './components/app/appMiddleware'
 import { AsyncStorage } from 'react-native'
 import { updateCards } from './components/card/cardActions'
 import { updateDecks } from './components/deck/deckActions'
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   quiz: quizReducer,
 })
 
-const store = createStore(rootReducer, undefined, applyMiddleware(storageMiddleware, loggerMiddleware))
+const store = createStore(rootReducer, undefined, applyMiddleware(storageMiddleware, loggerMiddleware, notificationMiddleware))
 
 type Props = {};
 export default class App extends Component<Props> {

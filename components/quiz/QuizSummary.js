@@ -46,16 +46,18 @@ const QuizSummary = ({ navigation, quizzes, cards, decks })=> {
       <Text style={quizStyles['subHeader']}>You answered { getScore(quiz.scores) } / { quiz.cards.length } correctly</Text>
       <Text style={quizStyles['subHeader']}> Your grade: { Math.round((getScore(quiz.scores) / quiz.cards.length) * 10000) / 100 }%</Text>
       <Text style={quizStyles['subHeader']}> { getScoreMessage(getScore(quiz.scores) / quiz.cards.length) }</Text>
-      <TouchableOpacity
-        style={appStyles.button}
-        onPress={()=>{navigation.navigate('QuizItem', {deck, index: 0, quizId })}}>
-        <Text>Retake</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={appStyles.button}
-        onPress={()=>{navigation.navigate('Deck', {id: deck.id, name: deck.name })}}>
-          <Text>Return to deck</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          style={[appStyles.button, quizStyles['summary.button']]}
+          onPress={()=>{navigation.navigate('QuizItem', {deck, index: 0, quizId })}}>
+          <Text style={quizStyles['summary.button.text']}>Retake</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[appStyles.button, quizStyles['summary.button']]}
+          onPress={()=>{navigation.navigate('Deck', {id: deck.id, name: deck.name })}}>
+            <Text style={quizStyles['summary.button.text']}>Return to deck</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList style={quizStyles['summary.cards']} data={quizCards} renderItem={renderItem} />
     </ScrollView>
   )

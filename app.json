@@ -1,4 +1,9 @@
 {
   "name": "flashcards",
-  "displayName": "flashcards"
+  "displayName": "flashcards",
+  "expo": {
+    "name": "flashcards",
+    "slug": "flashcards",
+    "sdkVersion": "27.0.0"
+  }
 }

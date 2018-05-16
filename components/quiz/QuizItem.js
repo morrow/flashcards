@@ -4,7 +4,7 @@ import { quizStyles } from './quizStyles'
 import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
 import FlippableCard from '../card/FlippableCard'
-import { updateQuizScore } from './quizActions'
+import { updateQuizScore, finishQuiz } from './quizActions'
 
 const QuizItem = ({ navigation, cards, quiz, onCorrect, onIncorrect})=> {
   const params = navigation.state.params
@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch)=> ({
     if(nextIndex > 0){
       navigation.navigate('QuizItem', {index: nextIndex})
     } else {
+      dispatch(finishQuiz(quizId))
       navigation.navigate('Quiz', { quizId })
       navigation.navigate('QuizSummary', { quizId })
     }
@@ -55,6 +56,7 @@ const mapDispatchToProps = (dispatch)=> ({
     if(nextIndex > 0){
       navigation.navigate('QuizItem', {index: nextIndex})
     } else {
+      dispatch(finishQuiz(quizId))
       navigation.navigate('Quiz', { quizId })
       navigation.navigate('QuizSummary', { quizId })
     }
