@@ -21,9 +21,11 @@ const getScoreMessage = (percent)=>{
   else                     return 'Keep studying!'
 }
 
-const QuizSummary = ({ navigation, quizzes, cards })=> {
+const QuizSummary = ({ navigation, quizzes, cards, decks })=> {
   const params = navigation.state.params
+  const quizId = params.quizId
   const quiz = quizzes.byId[params.quizId]
+  const deck = decks.byId[quiz.deckId]
   const quizCards = Object.keys(quiz.scores).map(c=>({
     score: quiz.scores[c],
     card: cards.byId[c]
@@ -32,22 +34,34 @@ const QuizSummary = ({ navigation, quizzes, cards })=> {
     let score = item.item.score ? 'correct' : 'incorrect'
     return (
       <View style={quizStyles[`summary.card`]}>
-        <Text style={ quizStyles['summary.card.question']}>Question: { item.item.card.question }</Text>
-        <Text style={ quizStyles['summary.card.answer']}>Answer: { item.item.card.answer }</Text>
-        <Text style={ quizStyles[`summary.card.score.${score}`] }>Score: { capitalize(score) }</Text>
+        <Text style={ quizStyles[`summary.card.question.${score}`]}>{ item.item.card.question }</Text>
+        <View style={ quizStyles['summary.card.seperator']}></View>
+        <Text style={ quizStyles[`summary.card.answer.${score}`]}>{ item.item.card.answer }</Text>
       </View>
     )
   }
   return (
     <ScrollView contentContainerStyle={appStyles.container}>
-      <Text style={quizStyles['header']}>{quiz.name} Summary </Text>
+      <Text style={quizStyles['header']}> Summary </Text>
       <Text style={quizStyles['subHeader']}>You answered { getScore(quiz.scores) } / { quiz.cards.length } correctly</Text>
       <Text style={quizStyles['subHeader']}> Your grade: { Math.round((getScore(quiz.scores) / quiz.cards.length) * 10000) / 100 }%</Text>
       <Text style={quizStyles['subHeader']}> { getScoreMessage(getScore(quiz.scores) / quiz.cards.length) }</Text>
+      <TouchableOpacity
+        style={appStyles.button}
+        onPress={()=>{navigation.navigate('QuizItem', {deck, index: 0, quizId })}}>
+        <Text>Retake</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={appStyles.button}
+        onPress={()=>{navigation.navigate('Deck', {id: deck.id, name: deck.name })}}>
+          <Text>Return to deck</Text>
+      </TouchableOpacity>
       <FlatList style={quizStyles['summary.cards']} data={quizCards} renderItem={renderItem} />
     </ScrollView>
   )
 }
+
+//<Text style={ quizStyles[`summary.card.score.${score}`] }>{ capitalize(score) }</Text>
 
 const mapStateToProps = (state)=> ({
   cards: state.card,

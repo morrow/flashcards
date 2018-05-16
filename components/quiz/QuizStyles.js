@@ -13,28 +13,60 @@ export const _quizStyles = {
   quiz: {
     startQuizButton: {
       marginTop: 30,
+      borderRadius: 10,
       text: {
-        borderRadius: 5,
         padding: 10,
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 30,
+        color: 'green',
+      }
+    },
+    resetQuizzesButton: {
+      width: 150,
+      backgroundColor: '#fafafa',
+      textAlign: 'center',
+      borderRadius: 5,
+      text: {
+        textAlign: 'center',
+        color: 'red',
+        padding: 5,
       }
     },
     pastGrades: {
-      marginTop: 20,
+      alignItems: 'center',
+      marginTop: 30,
+      header: {
+        fontSize: 18,
+        marginTop: 20,
+        marginBottom: 5,
+        fontWeight: 'bold',
+      },
       item: {
         flexDirection: 'row',
         score:{
+          width: 55,
+          textAlign: 'center',
           borderWidth: 1,
           borderColor: '#ccc',
           fontWeight:'bold',
-          width: 50,
           padding: 5,
+          fontFamily: 'courier',
+        },
+        scorePercent: {
+          textAlign: 'center',
+          width: 55,
+          borderWidth: 1,
+          borderColor: '#ccc',
+          fontWeight:'bold',
+          padding: 5,
+          fontFamily: 'courier',
         },
         date: {
           borderWidth: 1,
           borderColor: '#ccc',
           padding: 5,
+          textAlign: 'right',
+          fontFamily: 'courier',
         },
       },
     },
@@ -44,18 +76,23 @@ export const _quizStyles = {
       marginTop: 20,
       flexDirection: 'row',
       correctButton: {
+        borderRadius: 5,
         alignItems: 'center',
         marginRight: 10,
+        padding: 10,
         text: {
-          fontSize: 16,
+          fontSize: 20,
           color: 'green',
           fontWeight: 'bold',
         },
       },
       incorrectButton: {
+        borderRadius: 5,
         alignItems: 'center',
+        padding: 10,
+        marginLeft: 10,
         text: {
-          fontSize: 16,
+          fontSize: 20,
           color: 'red',
           fontWeight: 'bold',
         }
@@ -115,28 +152,51 @@ export const _quizStyles = {
       marginTop: 20,
     },
     card: {
-      width: 200,
+      width: 250,
       backgroundColor: 'white',
       padding: 10,
       borderRadius: 5,
       borderWidth: 1,
       alignItems: 'center',
       borderColor: '#ccc',
-      margin: 10,
+      margin: 5,
       justifyContent: 'center',
       question: {
-        fontSize: 18,
-      },
-      answer: {
-        fontSize: 18,
-      },
-      score: {
+        fontSize: 15,
         correct: {
-          fontSize: 18,
+          fontSize: 15,
           color: 'green',
         },
         incorrect: {
-          fontSize: 18,
+          fontSize: 15,
+          color: 'red'
+        },
+      },
+      seperator: {
+        paddingTop: 5,
+        marginBottom: 5,
+        borderBottomWidth: 1,
+        borderBottomColor: '#aaa',
+        width: 200,
+      },
+      answer: {
+        fontSize: 15,
+        correct: {
+          fontSize: 15,
+          color: 'green',
+        },
+        incorrect: {
+          fontSize: 15,
+          color: 'red'
+        },
+      },
+      score: {
+        correct: {
+          fontSize: 15,
+          color: 'green',
+        },
+        incorrect: {
+          fontSize: 15,
           color: 'red'
         },
       },

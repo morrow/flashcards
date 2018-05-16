@@ -33,6 +33,8 @@ export default class App extends Component<Props> {
 // disable yellow block
 console.disableYellowBox = true;
 
+// AsyncStorage.removeItem('@flashcards:state')
+
 AsyncStorage.getItem('@flashcards:state').then((result)=>{
   if(result){
     try {

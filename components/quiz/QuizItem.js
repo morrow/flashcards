@@ -17,7 +17,7 @@ const QuizItem = ({ navigation, cards, quiz, onCorrect, onIncorrect})=> {
   }
   return (
     <View style={appStyles.container}>
-      <Text style={quizStyles.header}>Quiz Item</Text>
+      <Text style={quizStyles.header}>Question {params.index + 1}/{quizCards.length}</Text>
       <FlippableCard key={card.id} front={card.question} back={card.answer} />
       <View style={quizStyles['quizItem.actions']}>
         <TouchableOpacity

@@ -59,8 +59,8 @@ export const deckReducer = (state=initial_state, action)=> {
     }
     case ADD_CARD_TO_DECK: {
       return {
-        ...state.byId,
         byId: {
+          ...state.byId,
           [action.deckId]: {
             ...state.byId[action.deckId],
             cards: [

@@ -1,6 +1,7 @@
 import { UPDATE_QUIZZES,
          CREATE_QUIZ,
-         UPDATE_QUIZ_SCORE } from './quizActions'
+         UPDATE_QUIZ_SCORE,
+         RESET_QUIZ_HISTORY } from './quizActions'
 
 const initial_state = {
   byId: {},
@@ -9,6 +10,7 @@ const initial_state = {
 
 const newQuiz = (deck)=> ({
   name: `${deck.name} Quiz`,
+  deckId: deck.id,
   cards: deck.cards,
   scores: {},
   timestamp: (new Date()).getTime(),
@@ -48,6 +50,16 @@ export const quizReducer = (state=initial_state, action)=> {
           ...state.allIds,
           state.allIds.length
         ]
+      }
+    }
+    break
+    case RESET_QUIZ_HISTORY: {
+      let allIds = Object.keys(state.byId)
+        .filter(key=>state.byId[key].deckId != action.deckId)
+      let byId = allIds.reduce( (obj, key) => (obj[key] = state.byId[key], obj), {} )
+      return {
+        byId,
+        allIds
       }
     }
     break
