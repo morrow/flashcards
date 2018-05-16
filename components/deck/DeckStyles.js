@@ -4,7 +4,7 @@ import { flattenObject } from '../app/appHelpers'
 export const _deckStyles = {
   container: {
     alignItems: 'center',
-    padding: 20,
+    padding: 10,
   },
   decks: {
     newDeck: {
@@ -47,6 +47,15 @@ export const _deckStyles = {
       fontSize: 35,
       fontWeight: 'bold',
     },
+    addNewCard: {
+      button: {
+        marginTop: 15,
+        marginLeft: 5,
+        text: {
+          color: 'green',
+        }
+      }
+    },
     cards: {
       fontSize:20,
       marginTop: 15,
@@ -55,10 +64,14 @@ export const _deckStyles = {
       fontSize:20,
       color: '#555',
       paddingTop: 20,
-      height:120,
+      height: 175,
     },
     buttons: {
       marginTop: 10,
+      reviewAndQuiz: {
+        marginTop: 10,
+        flexDirection: 'row'
+      },
       button: {
         padding: 15,
         backgroundColor: '#fff',
@@ -67,10 +80,27 @@ export const _deckStyles = {
         alignItems: 'center',
         borderColor: '#ccc',
         borderWidth: 1,
-      }
+        addCardText: {
+          fontWeight: 'bold',
+        }
+      },
+      reviewButton: {
+        text: {
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: '#09c',
+        }
+      },
+      startQuizButton: {
+        text:{
+          fontSize: 20,
+          color: 'green',
+          fontWeight: 'bold',
+        }
+      },
     },
     deckButtonText: {
-      fontSize: 20,
+      fontSize: 16,
       // color: 'black',
     },
   },

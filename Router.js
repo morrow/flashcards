@@ -21,7 +21,7 @@ const Router = createStackNavigator({
   Deck: {
     screen: Deck,
     navigationOptions: ({ navigation }) => ({
-      title: navigation.state.params.item.name,
+      title: navigation.state.params.name,
     }),
   },
   NewDeck: {

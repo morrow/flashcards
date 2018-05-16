@@ -17,7 +17,11 @@ export const _appStyles = {
   },
   header: {
     marginTop: 10,
-    fontSize: 23,
+    fontSize: 25,
+  },
+  subHeader: {
+    marginTop: 10,
+    fontSize: 20,
   },
   logo: {
     fontFamily: 'Avenir-Black',

@@ -34,7 +34,7 @@ export default class App extends Component<Props> {
 console.disableYellowBox = true;
 
 AsyncStorage.getItem('@flashcards:state').then((result)=>{
-  if(false && result){
+  if(result){
     try {
       store.dispatch(updateCards(JSON.parse(result).card))
       store.dispatch(updateDecks(JSON.parse(result).deck))

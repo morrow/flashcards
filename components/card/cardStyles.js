@@ -19,6 +19,13 @@ export const _styles = {
       justifyContent: 'center',
     },
     card: {
+      shadowColor: '#aaa',
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowRadius: 10,
+      shadowOpacity: 0.6,
       width: 250,
       minHeight: 100,
       justifyContent: 'center',

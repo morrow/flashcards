@@ -40,7 +40,7 @@ const NewDeck = ({ navigation, deck, decks, onChangeName, onChangeDescription, c
       </View>
       <View style={[appStyles['form.actions'], deckStyles['newDeck.actions']]}>
         <TouchableOpacity
-          onPress={()=>{onSubmit(navigation, this.name, this.description)}}
+          onPress={()=>{onSubmit(navigation, this.name, this.description, params.id)}}
           style={[appStyles['form.actions.updateButton'], deckStyles['newDeck.actions.updateButton']]}>
           <Text style={[appStyles['form.actions.updateButton.text'], deckStyles['newDeck.actions.updateButton.text']]}>Create Deck</Text>
         </TouchableOpacity>
@@ -65,10 +65,13 @@ const mapDispatchToProps = (dispatch)=> ({
   onChangeName: (text)=> {
     this.name = text
   },
-  onSubmit: (navigation, name)=> {
-    navigation.dispatch(NavigationActions.back())
+  onSubmit: (navigation, name, description, deckId)=> {
     if(name && name.replace(/ /g, '') !== ''){
+      navigation.dispatch(NavigationActions.back())
+      navigation.navigate('Deck', { deckId, name })
       dispatch(createDeck(name, description))
+    } else {
+      navigation.dispatch(NavigationActions.back())
     }
   },
   cancel: (navigation)=> {

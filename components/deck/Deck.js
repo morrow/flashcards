@@ -1,12 +1,13 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { deckStyles } from './deckStyles'
+import { appStyles } from '../app/appStyles'
 import { getCardCount } from '../card/cardHelpers'
 import { connect } from 'react-redux'
 import { Dimensions } from 'react-native'
 
-const Deck = ({ navigation, deckId, cards, decks })=> {
-  let deck = decks.byId[navigation.state.params.item.id]
+const Deck = ({ navigation, cards, decks })=> {
+  let deck = decks.byId[navigation.state.params.deckId]
   if(deck === undefined){
     return (<Text></Text>)
   }
@@ -22,11 +23,11 @@ const Deck = ({ navigation, deckId, cards, decks })=> {
       <ScrollView>
         <Text style={deckStyles['deck.description']}>{ deck.description }</Text>
       </ScrollView>
-      <View style={[this.rotationStyle, deckStyles['deck.buttons']]}>
+      <View style={deckStyles['deck.buttons']}>
         <TouchableOpacity
-          onPress={()=>{navigation.navigate('ManageDeck', { deckId: deck.id, name: deck.name } ) }}
+          onPress={()=>{navigation.navigate('NewCard', { deckId: deck.id } ) }}
           style={deckStyles['deck.buttons.button']}>
-          <Text style={deckStyles['deck.deckButtonText']}>Manage Deck</Text>
+          <Text style={[deckStyles['deck.deckButtonText'], deckStyles['deck.buttons.button.addCardText']]}>+ Add Card</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={()=>{navigation.navigate('ManageCards', { deckId: deck.id, name: deck.name } ) }}
@@ -34,14 +35,21 @@ const Deck = ({ navigation, deckId, cards, decks })=> {
           <Text style={deckStyles['deck.deckButtonText']}>Manage Cards</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={()=>{navigation.navigate('Review', { ...deck } ) }}
+          onPress={()=>{navigation.navigate('ManageDeck', { deckId: deck.id, name: deck.name } ) }}
           style={deckStyles['deck.buttons.button']}>
-          <Text style={deckStyles['deck.deckButtonText']}>Review Deck</Text>
+          <Text style={deckStyles['deck.deckButtonText']}>Manage Deck</Text>
         </TouchableOpacity>
+      </View>
+      <View style={deckStyles['deck.buttons.reviewAndQuiz']}>
         <TouchableOpacity
-          onPress={()=>{navigation.navigate('Quiz', { ...deck } ) }}
-          style={deckStyles['deck.buttons.button']}>
-          <Text style={deckStyles['deck.deckButtonText']}>Start Quiz</Text>
+            onPress={()=>{deck.cards.length > 0 ? navigation.navigate('Review', { ...deck } ) : alert('Add some cards first!') }}
+            style={[deckStyles['deck.buttons.reviewButton'], deckStyles['deck.buttons.button']]}>
+            <Text style={[deckStyles['deck.deckButtonText'], deckStyles['deck.buttons.reviewButton.text']]}>Review</Text>
+          </TouchableOpacity>
+        <TouchableOpacity
+          onPress={()=>{deck.cards.length > 0 ? navigation.navigate('Quiz', { ...deck } ) : alert('Add some cards first!')}}
+          style={[deckStyles['deck.buttons.button'], deckStyles['deck.buttons.startQuizButton']]}>
+          <Text style={[deckStyles['deck.deckButtonText'], deckStyles['deck.buttons.startQuizButton.text']]}>Quiz</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -55,3 +63,14 @@ const mapStateToProps = (state)=> ({
 
 
 export default connect(mapStateToProps)(Deck)
+
+/*
+<TouchableOpacity
+          style={[appStyles['button'], deckStyles['deck.addNewCard.button']]}
+          onPress={()=>{
+            navigation.navigate('ManageCards', {deckId: deck.id, name: deck.name})
+            navigation.navigate('NewCard', {deckId: deck.id})
+          }}>
+          <Text style={deckStyles['deck.addNewCard.button.text']}>+ Add Card</Text>
+        </TouchableOpacity>
+*/

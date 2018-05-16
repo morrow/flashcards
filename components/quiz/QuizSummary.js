@@ -1,24 +1,51 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, View, Text, TouchableOpacity, FlatList } from 'react-native'
 import { quizStyles } from './quizStyles'
 import { appStyles } from '../app/appStyles'
+import { capitalize } from '../app/appHelpers'
 import { connect } from 'react-redux'
 
-const getScore = (scores)=>{
-  if(Object.keys(scores).length <= 1){
-    return Object.values(scores)[0] === true ? 1 : 0
+const getScore = (scores)=> {
+  if(scores){
+    return Object.values(scores).reduce((sum, x) => sum + parseInt(x))
+  } else {
+    return 0
   }
-  return Object.values(scores).reduce((acc=0, value)=> value ? acc + 1 : acc)
 }
 
-const QuizSummary = ({ navigation, quizzes })=> {
+const getScoreMessage = (percent)=>{
+  if(percent == 1)         return 'Perfect Score!!!'
+  else if(percent >= 0.9)  return 'Excellent work!!'
+  else if(percent >= 0.8)  return 'Great job!'
+  else if(percent >= 0.7)  return 'Getting there!'
+  else                     return 'Keep studying!'
+}
+
+const QuizSummary = ({ navigation, quizzes, cards })=> {
   const params = navigation.state.params
   const quiz = quizzes.byId[params.quizId]
+  const quizCards = Object.keys(quiz.scores).map(c=>({
+    score: quiz.scores[c],
+    card: cards.byId[c]
+  }))
+  const renderItem = (item)=> {
+    let score = item.item.score ? 'correct' : 'incorrect'
+    return (
+      <View style={quizStyles[`summary.card`]}>
+        <Text style={ quizStyles['summary.card.question']}>Question: { item.item.card.question }</Text>
+        <Text style={ quizStyles['summary.card.answer']}>Answer: { item.item.card.answer }</Text>
+        <Text style={ quizStyles[`summary.card.score.${score}`] }>Score: { capitalize(score) }</Text>
+      </View>
+    )
+  }
   return (
-    <View style={appStyles.container}>
-      <Text style={quizStyles.header}>{quiz.name} Summary </Text>
-      <Text>{ getScore(quiz.scores) } / { quiz.cards.length } </Text>
-    </View>
+    <ScrollView contentContainerStyle={appStyles.container}>
+      <Text style={quizStyles['header']}>{quiz.name} Summary </Text>
+      <Text style={quizStyles['subHeader']}>You answered { getScore(quiz.scores) } / { quiz.cards.length } correctly</Text>
+      <Text style={quizStyles['subHeader']}> Your grade: { Math.round((getScore(quiz.scores) / quiz.cards.length) * 10000) / 100 }%</Text>
+      <Text style={quizStyles['subHeader']}> { getScoreMessage(getScore(quiz.scores) / quiz.cards.length) }</Text>
+      <FlatList style={quizStyles['summary.cards']} data={quizCards} renderItem={renderItem} />
+    </ScrollView>
   )
 }
 

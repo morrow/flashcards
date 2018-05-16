@@ -18,8 +18,7 @@ const QuizItem = ({ navigation, cards, quiz, onCorrect, onIncorrect})=> {
   return (
     <View style={appStyles.container}>
       <Text style={quizStyles.header}>Quiz Item</Text>
-      <Text>{ JSON.stringify(quiz, null, 2) }</Text>
-      <FlippableCard front={card.question} back={card.answer} />
+      <FlippableCard key={card.id} front={card.question} back={card.answer} />
       <View style={quizStyles['quizItem.actions']}>
         <TouchableOpacity
           style={[appStyles['button'], quizStyles['quizItem.actions.correctButton']]}
@@ -43,20 +42,22 @@ const mapStateToProps = (state)=> ({
 
 const mapDispatchToProps = (dispatch)=> ({
   onCorrect:(quizId, questionId, navigation, nextIndex)=>{
+    dispatch(updateQuizScore(quizId, questionId, 1))
     if(nextIndex > 0){
       navigation.navigate('QuizItem', {index: nextIndex})
     } else {
+      navigation.navigate('Quiz', { quizId })
       navigation.navigate('QuizSummary', { quizId })
     }
-    dispatch(updateQuizScore(quizId, questionId, true))
   },
   onIncorrect: (quizId, questionId, navigation, nextIndex)=> {
+    dispatch(updateQuizScore(quizId, questionId, 0))
     if(nextIndex > 0){
       navigation.navigate('QuizItem', {index: nextIndex})
     } else {
+      navigation.navigate('Quiz', { quizId })
       navigation.navigate('QuizSummary', { quizId })
     }
-    dispatch(updateQuizScore(quizId, questionId, false))
   },
 })
 

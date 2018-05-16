@@ -2,16 +2,17 @@ import React from 'react'
 import Card from './Card'
 import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { styles, _styles } from './cardStyles'
+import { appStyles } from '../app/appStyles'
 import { connect } from 'react-redux'
 import { createCard, updateCard, deleteCard } from './cardActions'
 import { addCardToDeck, removeCardFromDecks } from '../deck/deckActions'
 import { NavigationActions } from 'react-navigation'
 
-const NewCard = ({ navigation, deck, decks, cards, onChangeQuestion, onChangeAnswer, cancel, createCard, saveChanges })=> {
+const NewCard = ({ navigation, decks, cards, onChangeQuestion, onChangeAnswer, cancel, createCard, saveChanges })=> {
   const params = {
     id: decks.allIds.length,
     key: decks.allIds.length,
-    deckId: navigation.state.params.deck,
+    deckId: navigation.state.params.deckId,
     question: '',
     answer: '',
   }
@@ -19,7 +20,7 @@ const NewCard = ({ navigation, deck, decks, cards, onChangeQuestion, onChangeAns
   this.answer = params.answer
   return (
     <View style={styles.container}>
-      <Text style={styles['manageCards.header']}>New Card </Text>
+      <Text style={[appStyles.header, styles['manageCards.header']]}>New Card </Text>
       <View style={styles['manageCards.question']}>
         <Text style={styles['manageCards.label']}>Question:</Text>
         <TextInput

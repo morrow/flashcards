@@ -11,6 +11,7 @@ const newQuiz = (deck)=> ({
   name: `${deck.name} Quiz`,
   cards: deck.cards,
   scores: {},
+  timestamp: (new Date()).getTime(),
 })
 
 export const quizReducer = (state=initial_state, action)=> {

@@ -9,7 +9,7 @@ const Decks =({navigation, decks, ids})=> {
   const renderItem = (item)=> (
     <TouchableOpacity
       key={item.item.name}
-      onPress={(deck)=>{navigation.navigate('Deck', { ...item } ) }}
+      onPress={(deck)=>{navigation.navigate('Deck', { deckId: item.item.id, name: item.item.name } ) }}
       style={styles['decks.button']}>
       <Text style={styles['decks.button.text.name']}>{ item.item.name }</Text>
       <Text style={styles['decks.button.text.cards']}>{ getCardCount(item.item.cards, true) }</Text>
@@ -22,7 +22,7 @@ const Decks =({navigation, decks, ids})=> {
         Object.keys(decks).length > 0 ?
         <FlatList data={Object.values(decks)} renderItem={renderItem} />
         :
-        <Text style={appStyles.header}>Create a deck to get started:</Text>
+        <Text style={appStyles.subHeader}>Create a deck to get started:</Text>
       }
       <TouchableOpacity
         style={styles['decks.newDeck.newDeckButton']}

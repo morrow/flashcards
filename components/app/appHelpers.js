@@ -1,3 +1,5 @@
+export const capitalize = (input)=> input[0].toUpperCase() + input.slice(1)
+
 _flatten = (obj, seperator, keys=[]) => {
   return Object.keys(obj).reduce((acc, key) => {
     return Object.assign(acc, (()=>{
