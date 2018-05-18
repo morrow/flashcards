@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 import FlippableCard from '../card/FlippableCard'
 import { updateQuizScore, finishQuiz } from './quizActions'
 
-const QuizItem = ({ navigation, cards, quiz, onCorrect, onIncorrect})=> {
+const QuizItem = ({ navigation, cards, quizzes, onCorrect, onIncorrect})=> {
   const params = navigation.state.params
   const quizCards = params.deck.cards
-  const card = cards.byId[params.index]
+  const quiz = quizzes.byId[params.quizId]
+  const card = cards.byId[quiz.cards[params.index]]
   if(card == undefined){
     return (
       <Text>Card not found. { params.index }</Text>
@@ -37,7 +38,7 @@ const QuizItem = ({ navigation, cards, quiz, onCorrect, onIncorrect})=> {
 
 const mapStateToProps = (state)=> ({
   cards: state.card,
-  quiz: state.quiz
+  quizzes: state.quiz
 })
 
 const mapDispatchToProps = (dispatch)=> ({

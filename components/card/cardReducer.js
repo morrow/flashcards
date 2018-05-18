@@ -18,7 +18,6 @@ export const cardReducer = (state=initial_state, action)=> {
       card.id = state.allIds.length
       card.key = card.id
       return {
-        ...state,
         byId: {
           ...state.byId,
           [card.id]: {
@@ -31,6 +30,7 @@ export const cardReducer = (state=initial_state, action)=> {
         ],
       }
     }
+    break
     case UPDATE_CARD: {
       let card = state.byId[action.id]
       card.question = action.question
@@ -43,9 +43,11 @@ export const cardReducer = (state=initial_state, action)=> {
         }
       }
     }
+    break
     case UPDATE_CARDS: {
       return action.cards
     }
+    break
     case DELETE_CARD: {
       let byId = Object.keys(state.byId)
         .filter(key=>key != action.id)
@@ -56,6 +58,7 @@ export const cardReducer = (state=initial_state, action)=> {
         allIds
       }
     }
+    break
     default:
       return state
   }

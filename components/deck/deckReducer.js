@@ -31,6 +31,7 @@ export const deckReducer = (state=initial_state, action)=> {
         ]
       }
     }
+    break
     case UPDATE_DECK: {
       return {
         byId: {
@@ -44,9 +45,11 @@ export const deckReducer = (state=initial_state, action)=> {
         allIds: state.allIds
       }
     }
+    break
     case UPDATE_DECKS: {
       return action.decks
     }
+    break
     case DELETE_DECK: {
       let byId = Object.keys(state.byId)
         .filter(key=>key != action.id)
@@ -57,6 +60,7 @@ export const deckReducer = (state=initial_state, action)=> {
         allIds
       }
     }
+    break
     case ADD_CARD_TO_DECK: {
       return {
         byId: {
@@ -72,6 +76,7 @@ export const deckReducer = (state=initial_state, action)=> {
         allIds: state.allIds
       }
     }
+    break
     case REMOVE_CARD_FROM_DECKS: {
       let new_state = JSON.parse(JSON.stringify(state))
       Object.keys(new_state.byId).map(k=>{
@@ -82,6 +87,7 @@ export const deckReducer = (state=initial_state, action)=> {
         ...new_state
       }
     }
+    break
     default:
       return state
   }
