@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import Router from './Router'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { cardReducer } from './components/card/cardReducer'
-import { deckReducer } from './components/deck/deckReducer'
-import { quizReducer } from './components/quiz/quizReducer'
-import { storageMiddleware, loggerMiddleware, notificationMiddleware } from './components/app/appMiddleware'
 import { AsyncStorage } from 'react-native'
-import { updateCards } from './components/card/cardActions'
-import { updateDecks } from './components/deck/deckActions'
-import { updateQuizzes } from './components/quiz/quizActions'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { storageMiddleware, loggerMiddleware, notificationMiddleware } from './appMiddleware'
+import { cardReducer } from '../card/cardReducer'
+import { deckReducer } from '../deck/deckReducer'
+import { quizReducer } from '../quiz/quizReducer'
+import { updateCards } from '../card/cardActions'
+import { updateDecks } from '../deck/deckActions'
+import { updateQuizzes } from '../quiz/quizActions'
 
 const rootReducer = combineReducers({
   card: cardReducer,
