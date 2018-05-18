@@ -71,6 +71,9 @@ export const _quizStyles = {
     },
   },
   quizItem: {
+    flipHelp: {
+      color: '#aaa',
+    },
     actions: {
       marginTop: 20,
       flexDirection: 'row',

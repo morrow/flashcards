@@ -19,7 +19,6 @@ export const _styles = {
       justifyContent: 'center',
     },
     card: {
-
       width: 250,
       minHeight: 100,
       justifyContent: 'center',

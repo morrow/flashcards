@@ -4,22 +4,24 @@ import { View, Text, TouchableOpacity, Animated, Easing } from 'react-native'
 import { styles } from './cardStyles'
 
 const FlippableCard = ({ front, back })=> {
-  this.rotation = 0
-  this.animatedRotation = new Animated.Value(0)
-  this.animatedRotation.addListener(({ value })=>{
-    this.rotation = value
+  let card = {
+    rotation: 0,
+    animatedRotation: new Animated.Value(0),
+  }
+  card.animatedRotation.addListener(({ value })=>{
+    card.rotation = value
   })
-  this.frontInterpolation = this.animatedRotation.interpolate({
+  card.frontInterpolation = card.animatedRotation.interpolate({
     inputRange: [0, 180],
     outputRange: ['0deg', '180deg']
   })
-  this.backInterpolation = this.animatedRotation.interpolate({
+  card.backInterpolation = card.animatedRotation.interpolate({
     inputRange: [0, 180],
     outputRange: ['180deg', '360deg']
   })
-  const flip = ()=> {
-    let endValue = this.rotation >= 90 ? 0 : 180
-    Animated.spring(this.animatedRotation,
+  const flip = (card)=> {
+    let endValue = card.rotation >= 90 ? 0 : 180
+    Animated.spring(card.animatedRotation,
       {
         toValue: endValue,
         friction: 10,
@@ -35,12 +37,12 @@ const FlippableCard = ({ front, back })=> {
   })
   return (
     <TouchableOpacity
-      onPress={()=>{flip()}}
+      onPress={()=>{flip(card)}}
       style={styles['flippable.cardButton']}>
-      <Animated.View style={[styles['flippable.card'], getRotatedStyle(this.frontInterpolation)]}>
+      <Animated.View style={[styles['flippable.card'], getRotatedStyle(card.frontInterpolation)]}>
         <Text style={styles['flippable.card.text']}>{front}</Text>
       </Animated.View>
-      <Animated.View style={[styles['flippable.card'], styles['flippable.card.back'], getRotatedStyle(this.backInterpolation)]}>
+      <Animated.View style={[styles['flippable.card'], styles['flippable.card.back'], getRotatedStyle(card.backInterpolation)]}>
         <Text style={styles['flippable.card.answerHeader']}>Answer:</Text>
         <Text style={[styles['flippable.card.text'], styles['flippabler.card.answer']]}>{back}</Text>
       </Animated.View>

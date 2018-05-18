@@ -20,6 +20,7 @@ const QuizItem = ({ navigation, cards, quizzes, onCorrect, onIncorrect})=> {
     <View style={appStyles.container}>
       <Text style={quizStyles.header}>Question {params.index + 1}/{quizCards.length}</Text>
       <FlippableCard key={card.id} front={card.question} back={card.answer} />
+      <Text style={quizStyles['quizItem.flipHelp']}>Tap card to flip</Text>
       <View style={quizStyles['quizItem.actions']}>
         <TouchableOpacity
           style={[appStyles['button'], quizStyles['quizItem.actions.correctButton']]}
